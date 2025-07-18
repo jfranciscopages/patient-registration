@@ -7,3 +7,4 @@ use App\Http\Controllers\Api\PatientController;
 
 Route::get('/patients', [PatientController::class, 'index']);
 Route::post('/patients', [PatientController::class, 'store']);
+Route::get('/patients/{id}', [PatientController::class, 'show']);
