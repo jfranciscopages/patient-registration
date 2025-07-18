@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import PatientList from "./components/PatientList";
-import PatientForm from "./components/PatientForm";
+import RegisterForm from "./components/RegisterForm";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<PatientList />} />
-      <Route path="/add" element={<PatientForm />} />
+      <Route path="/add" element={<RegisterForm />} />
     </Routes>
   );
 }
