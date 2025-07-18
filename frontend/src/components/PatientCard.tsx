@@ -13,7 +13,7 @@ const PatientCard = ({
     <div className="w-full max-w-sm p-4 rounded-lg shadow border bg-white space-y-2">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-24 h-24 rounded overflow-hidden bg-gray-200 flex items-center justify-center text-xl font-semibold text-white bg-blue-500">
+          <div className="w-32 h-32 rounded overflow-hidden bg-gray-200 flex items-center justify-center text-xl font-semibold text-white bg-blue-500">
             {patient.document_photo ? (
               <img
                 src={`http://localhost:8000/storage/${patient.document_photo}`}
