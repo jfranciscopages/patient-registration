@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import FormField from "./FormField";
 import ImageDropzone from "./ImageDropzone";
+import Modal from "./Modal";
 
 type FormInputs = {
   fullName: string;
@@ -28,6 +29,7 @@ const RegisterForm = () => {
   const documentPhoto = watch("documentPhoto");
 
   const [message, setMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const MAX_FILE_SIZE_MB = 1;
   const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
@@ -75,19 +77,21 @@ const RegisterForm = () => {
           }
         }
         setMessage("Error registering patient.");
+        setShowModal(true);
         return;
       }
 
       setMessage("Patient successfully registered.");
+      setShowModal(true);
       reset();
-      setTimeout(() => navigate("/"), 1500);
     } catch (err) {
       setMessage("Server error: " + (err as Error).message);
+      setShowModal(true);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="flex items-center justify-center bg-gray-100 p-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-6 rounded shadow-md w-full max-w-md space-y-4"
@@ -176,8 +180,14 @@ const RegisterForm = () => {
           Back to Patients
         </Button>
 
-        {message && (
-          <p className="mt-2 text-center text-sm font-medium">{message}</p>
+        {showModal && (
+          <Modal
+            message={message}
+            onClose={() => {
+              setShowModal(false);
+              if (message.includes("success")) navigate("/");
+            }}
+          />
         )}
       </form>
     </div>
