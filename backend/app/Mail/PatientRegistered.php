@@ -20,7 +20,7 @@ class PatientRegistered extends Mailable
 
     public function build()
     {
-        return $this->subject('Registro exitoso')
+        return $this->subject('Patient Registration Successful')
             ->markdown('emails.patient.registered', [
                 'patient' => $this->patient
             ]);
