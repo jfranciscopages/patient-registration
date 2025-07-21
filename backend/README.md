@@ -40,9 +40,6 @@ php artisan migrate
 php artisan db:seed --class=PatientSeeder
 ```
 ### 7. Create symbolic link to access uploaded images
-bash
-Copiar código
-
 ```bash
 php artisan storage:link
 ```
